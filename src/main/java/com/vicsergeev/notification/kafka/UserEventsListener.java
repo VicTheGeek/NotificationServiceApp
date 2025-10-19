@@ -22,7 +22,7 @@ public class UserEventsListener {
 
     @KafkaListener(topics = "user-events", groupId = "notification-service")
     public void onUserEvent(UserEventDTO event) {
-        log.info("Received user event: operation={}, email={}, name={}", event.operation(), event.email(), event.name());
+        log.info("received user event: operation={}, email={}, name={}", event.operation(), event.email(), event.name());
         if (UserEventDTO.CREATE.equals(event.operation())) {
             emailService.sendAccountCreated(event.email());
             log.info("account created, send email to {}", event.email());
