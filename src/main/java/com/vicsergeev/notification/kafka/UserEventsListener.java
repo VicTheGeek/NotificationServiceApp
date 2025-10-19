@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Created by Victor 16.10.2025
+ */
+
 @Component
 public class UserEventsListener {
     private final EmailService emailService;
