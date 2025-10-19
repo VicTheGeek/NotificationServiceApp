@@ -25,12 +25,12 @@ public class UserEventsListener {
         log.info("Received user event: operation={}, email={}, name={}", event.operation(), event.email(), event.name());
         if (UserEventDTO.CREATE.equals(event.operation())) {
             emailService.sendAccountCreated(event.email());
-            log.info("Sent account created email to {}", event.email());
+            log.info("account created, send email to {}", event.email());
         } else if (UserEventDTO.DELETE.equals(event.operation())) {
             emailService.sendAccountDeleted(event.email());
-            log.info("Sent account deleted email to {}", event.email());
+            log.info("account deleted, send email to {}", event.email());
         } else {
-            log.info("Ignored event with operation {}", event.operation());
+            log.info("ignored event with operation {}", event.operation());
         }
     }
 }

@@ -16,12 +16,12 @@ public class EmailService {
     }
 
     public void sendAccountCreated(String email) {
-        log.info("Sending account created email to: {}", email);
+        log.info("sending account created email to: {}", email);
         send(email, "Уведомление о создании аккаунта", "Здравствуйте! Ваш аккаунт на сайте ваш сайт был успешно создан.");
     }
 
     public void sendAccountDeleted(String email) {
-        log.info("Sending account deleted email to: {}", email);
+        log.info("sending account deleted email to: {}", email);
         send(email, "Уведомление об удалении аккаунта", "Здравствуйте! Ваш аккаунт был удалён.");
     }
 
@@ -32,9 +32,9 @@ public class EmailService {
             message.setSubject(subject);
             message.setText(body);
             mailSender.send(message);
-            log.info("Email sent successfully to: {}", to);
+            log.info("email sent successfully to: {}", to);
         } catch (Exception e) {
-            log.error("Failed to send email to: {}, error: {}", to, e.getMessage(), e);
+            log.error("failed to send email to: {}, error: {}", to, e.getMessage(), e);
         }
     }
 }
