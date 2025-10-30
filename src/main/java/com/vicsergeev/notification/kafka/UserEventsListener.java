@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 public class UserEventsListener {
     private final EmailService emailService;
     private static final Logger log = LoggerFactory.getLogger(UserEventsListener.class);
-
     public UserEventsListener(EmailService emailService) {
         this.emailService = emailService;
     }
