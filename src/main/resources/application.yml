@@ -25,7 +25,7 @@ spring:
           auth: false
           starttls:
             enable: false
-
+# main service port
 server:
   port: 8091
 
