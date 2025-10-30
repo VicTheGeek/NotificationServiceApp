@@ -1,25 +1,3 @@
-http://localhost:8091/notifications/send
-{
-"email": "test@test.ru",
-"subject": "test sub",
-"text": "это тестовое сообщение"
-}
-
-http://localhost:8091/notifications/create
-{
-"email": "user@example.com"
-}
-
-http://localhost:8091/notifications/delete
-{
-"email": "user@example.com"
-}
-
-
-
-
-
-=================================================================================================================
 https://stackoverflow.com/questions/48753051/simple-embedded-kafka-test-example-with-spring-boot
 
 https://docs.spring.io/spring-kafka/reference/testing.html
