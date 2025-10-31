@@ -29,4 +29,12 @@ spring:
 server:
   port: 8091
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      mailSender:
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
 

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @Service
 public class EmailService {
     private final JavaMailSender mailSender;
@@ -25,6 +27,7 @@ public class EmailService {
         send(email, "Уведомление об удалении аккаунта", "Здравствуйте! Ваш аккаунт был удалён.");
     }
 
+    @CircuitBreaker(name = "mailSender", fallbackMethod = "fallbackSend")
     public void send(String to, String subject, String body) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
@@ -35,7 +38,13 @@ public class EmailService {
             log.info("email sent successfully to: {}", to);
         } catch (Exception e) {
             log.error("failed to send email to: {}, error: {}", to, e.getMessage(), e);
+            throw e;
         }
+    }
+
+    private void fallbackSend(String to, String subject, String body, Throwable t) {
+        log.warn("mailSender fallback for to={}, reason={}", to, t.toString());
+        // graceful degradation - throw nothing
     }
 }
 
